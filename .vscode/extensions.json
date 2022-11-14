@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ms-python.isort",
+        "ms-python.python",
+        "bungcip.better-toml",
+        "editorconfig.editorconfig",
+        "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "visualstudioexptteam.vscodeintellicode",
+        "esbenp.prettier-vscode",
+        "ms-python.vscode-pylance",
+        "ms-vsliveshare.vsliveshare"
+    ]
+}
