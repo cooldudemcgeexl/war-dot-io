@@ -34,3 +34,15 @@ While this does give us a _lot_ of genrated data very quickly, we run into a few
 ![image](images/inputdata.png)
 
 Additionally, _WarioWare_ contains both short transitions between microgames-generally on the order of 2-3 seconds at the start of a run, gradually decreasing the further the player gets, as well as longer intermissions intended to give the player a break-around 10-15 seconds. These moments, as well as time spent in the menus, generate a lot of junk data that also needs to be filtered out.
+
+Having the ability to tag each image with the current microgame would inherently sort the images, as well as allow us to filter out unnecessary data from the dataset. This brings us to the main point of this document: reverse engineering _WarioWare_.
+
+## Reversing _WarioWare_, and How We Plan to Do It
+
+Ideally, the best case for our project would be able to utilize the scripting API to peek at a location in the game's memory that can be used to identify the microgame, then append that to the output file.
+
+Our toolchain for decompiling/reverse engineering is as follows:
+
+- [Ghidra](https://ghidra-sre.org)
+  - [gba-ghidra-loader](https://github.com/pudii/gba-ghidra-loader)
+- [gdb-multiarch](https://packages.ubuntu.com/bionic/gdb-multiarch)
