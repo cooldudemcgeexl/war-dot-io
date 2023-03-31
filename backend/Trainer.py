@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
+import os
 
 """
 Parameters
@@ -15,7 +16,7 @@ epochs = 3
 """
 Data
 """
-training_images, testing_images = keras.utils.image_dataset_from_directory("C:\\Users\\niebe\\PycharmProjects\\KerasTest\\images\\test",
+training_images, testing_images = keras.utils.image_dataset_from_directory(os.getcwd() + "\\images",
                                                         "inferred", "categorical", color_mode="rgb", batch_size=batch_size,
                                                         image_size=(img_height, img_width), subset="both", seed=1337, validation_split=.2)
 
@@ -50,7 +51,7 @@ if method == "train":
     """
     model.compile(optimizer="Adam", loss="categorical_crossentropy", metrics=["accuracy"])
     history = model.fit(training_images_norm, epochs=epochs)
-    model.save("C:\\Users\\niebe\\PycharmProjects\\KerasTest")
+    model.save(os.getcwd())
     """
     Testing
     """
@@ -58,7 +59,7 @@ if method == "train":
     print("test loss, test acc: ", results)
 
 elif method == "load":
-    model = keras.models.load_model("C:\\Users\\niebe\\PycharmProjects\\KerasTest")
+    model = keras.models.load_model(os.getcwd())
     """
     Testing
     """
