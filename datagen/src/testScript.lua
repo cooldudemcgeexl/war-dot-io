@@ -1,7 +1,7 @@
 --require "tables.oam.oamOBJ"
 --require "utils.oam"
-local StringTable = require("tables.gameText.intro.asciiString")
-
+local stringTable = require("tables.gameText.intro.asciiString")
+require "utils.vram"
 -- matchbytes = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x88, 0x0, 0x0, 0x88, 0xBB, 0x0, 0x80, 0xB8, 0xBB, 0x0, 0x88, 0xBB,
 --              0x8B, 0x80, 0xB8, 0xBB, 0x88, 0x80, 0xBB, 0x8B, 0x8, 0x88, 0xBB, 0x88, 0x0}
 
@@ -21,8 +21,11 @@ local StringTable = require("tables.gameText.intro.asciiString")
     end
 end ]]
 function testFunc2()
-    local stringTable = StringTable:new(nil)
     console:log("String length " .. #(stringTable.DRESS))
+    console:log("String length " .. #(getVRAMSlots(4)))
+    if getVRAMSlots(4) == stringTable.DRESS then
+        console:log("FOUND WARIO WEAR")
+    end
 end
 
 callbacks:add("frame", testFunc2)
