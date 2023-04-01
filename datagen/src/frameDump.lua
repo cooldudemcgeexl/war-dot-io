@@ -1,5 +1,5 @@
 currDate = os.date("%Y%m%d-%H%M%S")
-outputDir = "INSERT PATH HERE"
+outputDir = "C:\\Users\\asill\\OneDrive\\Documents\\repos\\wardotio\\resources\\dumps\\"
 
 function dumpFrame()
     frameNum = emu:currentFrame()
@@ -22,6 +22,12 @@ function dumpGameInfo()
     console:log("Game code: " .. gameCode)
 end
 
+function bufferTest()
+    buffer:clear()
+    buffer:print("Test")
+end
+
 callbacks:add("start", dumpGameInfo)
 callbacks:add("frame", testPrint)
+callbacks:add("frame", bufferTest)
 callbacks:add("frame", dumpFrame)
