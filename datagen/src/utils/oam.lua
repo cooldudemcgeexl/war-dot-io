@@ -1,21 +1,35 @@
 OAMObj = require("tables.oam.oamOBJ")
 
-local function getOAMArray(slots)
+---Get an array of n OAM objects
+---@param slots number
+---@return table<number,OAMObj>
+function getOAMArray(slots)
     local oamArr = {}
-    for i = 0, slots - 1, 1 do
-        oamArr[#i + 1] = OAMObj:new(nil, i)
+    local slotNum = slots - 1
+    for i = 0, slotNum, 1 do
+        oamArr[#oamArr + 1] = OAMObj:new(nil, i)
     end
     return oamArr
 end
 
-
-local function printOAMArray(oamArr)
-    for i, oamObj in ipairs(oamArr) do
-        oamObj:debugPrint()
+---Print debugPrint from each OAM object
+---@param oamArr table<number,OAMObj>
+function printOAMArray(oamArr)
+    for _, oamObj in ipairs(oamArr) do
+        console:log(tostring(oamObj:getTileIndex()))
     end
 end
 
-oam = {
-    getOAMArray = getOAMArray,
-    printOAMArray = printOAMArray
-}
+---Return the length of a string of tiles
+---@param oamArr table<number, OAMObj>
+---@return integer
+function getTileStringLength(oamArr)
+    local oamStrLen = 0
+    for i, oamObj in ipairs(oamArr) do
+        if oamObj:getTileIndex() > 600 then
+            oamStrLen = i - 1
+            break
+        end
+    end
+    return oamStrLen
+end
