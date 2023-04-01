@@ -6,6 +6,7 @@
   "Lua.diagnostics.globals": [
     "console",
     "emu",
-    "callbacks"
+    "callbacks",
+    "buffer"
   ]
 }
