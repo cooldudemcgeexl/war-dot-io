@@ -1,5 +1,5 @@
 require "tables.oam.oamOBJ"
-oam = require("utils.oam")
+local oam = require("utils.oam")
 
 -- matchbytes = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x88, 0x0, 0x0, 0x88, 0xBB, 0x0, 0x80, 0xB8, 0xBB, 0x0, 0x88, 0xBB,
 --              0x8B, 0x80, 0xB8, 0xBB, 0x88, 0x80, 0xBB, 0x8B, 0x8, 0x88, 0xBB, 0x88, 0x0}
@@ -8,7 +8,7 @@ oam = require("utils.oam")
 
 function testRead()
     -- testFuncFromTables()
-    oamarr = oam:getOAMArray(10)
+    local oamarr = oam:getOAMArray(10)
     oam:printOAMArray(oamArr)
     -- bytes = emu:readRange(0x06014420, 32)
     --[[ console:log(tostring(string.byte(bytes, 7)))
@@ -18,7 +18,6 @@ function testRead()
     if match then
         console:log("MATCH FOUND")
     end ]]
-
 end
 
 callbacks:add("frame", testRead)
