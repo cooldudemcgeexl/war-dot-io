@@ -11,8 +11,6 @@ black = "^22.10.0"
 opencv-python = "^4.6.0.66"
 pillow = "^9.3.0"
 flask = "^2.2.3"
-marshmallow = "^3.19.0"
-sqlalchemy = "^2.0.8"
 psycopg2-binary = "^2.9.5"
 python-dotenv = "^1.0.0"
 
