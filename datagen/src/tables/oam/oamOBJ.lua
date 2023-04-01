@@ -2,6 +2,16 @@ local OAMAttr0 = require("tables.oam.oamAttr0")
 local OAMAttr1 = require("tables.oam.oamAttr1")
 local OAMAttr2 = require("tables.oam.oamAttr2")
 
+---@class OAMObj
+---@field oamSlot number
+---@field address number
+---@field attr0 number
+---@field attribute0 OAMAttr0
+---@field attr1 number
+---@field attribute1 OAMAttr1
+---@field attr2 number
+---@field attribute2 OAMAttr2
+---@field attr3 number
 local OAMObj = {
     oamSlot = 0
 }
@@ -33,6 +43,8 @@ function OAMObj:debugPrint()
     console:log("Attribute 3: " .. self.attr3)
 end
 
+--- Get the tile index of the current object
+--- @return number
 function OAMObj:getTileIndex()
     return self.attribute2.tile_idx
 end

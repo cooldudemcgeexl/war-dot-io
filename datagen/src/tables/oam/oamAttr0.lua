@@ -1,3 +1,9 @@
+---@class OAMAttr0
+---@field shape number
+---@field color_mode number
+---@field mosaic number
+---@field affine number
+---@field y number
 local OAMAttr0 = {
     shape = 0,
     color_mode = 0,

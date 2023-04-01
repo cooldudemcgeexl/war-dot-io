@@ -1,3 +1,8 @@
+--- @class OAMAttr1
+--- @field size number
+--- @field vflip number
+--- @field hflip number
+--- @field x number
 local OAMAttr1 = {
     size = 0,
     vflip = 0,
@@ -5,6 +10,9 @@ local OAMAttr1 = {
     x = 0
 }
 
+--- Create new OAMAttr1
+---@param o OAMAttr1|nil
+---@param oamAttr number
 function OAMAttr1:new(o, oamAttr)
     local o = o or {}
     setmetatable(o, self)

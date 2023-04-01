@@ -1,3 +1,7 @@
+--- @class OAMAttr2
+--- @field palette_bank number
+--- @field priority number
+--- @field tile_idx number
 local OAMAttr2 = {
     palette_bank = 0,
     priority = 0,
