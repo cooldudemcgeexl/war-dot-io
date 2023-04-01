@@ -4,12 +4,24 @@ local OBJVRAMADDR = 0x06014400
 ---@param numSlots integer
 ---@return string
 local function getVRAMSlots(numSlots)
-    bytes = emu:readRange(OBJVRAMADDR, 32 * (3 * numSlots))
+    local bytes = emu:readRange(OBJVRAMADDR, 32 * (3 * numSlots))
     return bytes
 end
 
+---Check the first tile in VRAM. If it is different, return the new value. Otherwise, return nil.
+---@param currOBJVramStart string
+---@return string|nil
+local function hasOBJVRAMChanged(currOBJVramStart)
+    local newOBJVramStart = emu:readRange(OBJVRAMADDR, 32 * 3)
+    if newOBJVramStart ~= currOBJVramStart then
+        return newOBJVramStart
+    end
+    return nil
+end
+
 local vram = {
-    getVRAMSlots = getVRAMSlots
+    getVRAMSlots = getVRAMSlots,
+    hasOBJVRAMChanged = hasOBJVRAMChanged
 }
 
 return vram

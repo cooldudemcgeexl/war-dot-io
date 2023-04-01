@@ -49,12 +49,4 @@ function OAMObj:getTileIndex()
     return self.attribute2.tile_idx
 end
 
-function testFuncFromTables()
-    testObj1 = OAMObj:new(nil, 0)
-    testObj2 = OAMObj:new(nil, 1)
-    console:log("Printing OAM Attributes")
-    console:log(tostring(testObj1:getTileIndex()))
-
-end
-
 return OAMObj
