@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String
 from .entity import Entity, Base
+from marshmallow import Schema, fields
 
 
 class Image(Entity, Base):
@@ -11,3 +12,10 @@ class Image(Entity, Base):
         Entity.__init__(self)
         self.img_src = img
         self.game_name = gameName
+
+
+class ImageSchema(Schema):
+    id = fields.Number()
+    created_on = fields.DateTime()
+    img_src = fields.Str()
+    game_name = fields.Str()
