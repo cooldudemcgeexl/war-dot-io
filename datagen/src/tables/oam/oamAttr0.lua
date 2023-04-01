@@ -21,6 +21,7 @@ function OAMAttr0:new(o, oamAttr)
 end
 
 function OAMAttr0:debugPrint()
+    console:log("Attribute 0 expanded:")
     console:log("Shape: " .. self.shape)
     console:log("Color Mode: " .. self.color_mode)
     console:log("Mosaic: " .. self.mosaic)

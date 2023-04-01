@@ -17,12 +17,11 @@ function OAMAttr1:new(o, oamAttr)
 end
 
 function OAMAttr1:debugPrint()
+    console:log("Attribute 1 expanded:")
     console:log("Size: " .. self.size)
-    console:log("Color Mode: " .. self.color_mode)
-    console:log("Mosaic: " .. self.mosaic)
-    console:log("Effect: " .. self.effect)
-    console:log("Affine: " .. self.affine)
-    console:log("Y: " .. self.y)
+    console:log("VFlip: " .. self.vflip)
+    console:log("HFlip: " .. self.hflip)
+    console:log("X: " .. self.x)
 end
 
 return OAMAttr1

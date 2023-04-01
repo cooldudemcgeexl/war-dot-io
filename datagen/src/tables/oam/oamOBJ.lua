@@ -1,4 +1,6 @@
 local OAMAttr0 = require("tables.oam.oamAttr0")
+local OAMAttr1 = require("tables.oam.oamAttr1")
+local OAMAttr2 = require("tables.oam.oamAttr2")
 
 local OAMObj = {
     oamSlot = 0
@@ -13,26 +15,34 @@ function OAMObj:new(o, oamSlot)
     o.attr0 = emu:read16(o.address)
     o.attribute0 = OAMAttr0:new(nil, o.attr0)
     o.attr1 = emu:read16(o.address + 2)
+    o.attribute1 = OAMAttr1:new(nil, o.attr1)
     o.attr2 = emu:read16(o.address + 4)
+    o.attribute2 = OAMAttr2:new(nil, o.attr2)
     o.attr3 = emu:read16(o.address + 6)
     return o
 end
 
 function OAMObj:debugPrint()
     console:log("Reading from OAM Slot " .. self.oamSlot)
-    console:log("Attribute 0 " .. self.attr0)
-    console:log("Attribute 0 expanded:")
+    console:log("Attribute 0: " .. self.attr0)
     self.attribute0:debugPrint()
-    console:log("Attribute 1 " .. self.attr1)
-    console:log("Attribute 2 " .. self.attr2)
-    console:log("Attribute 3 " .. self.attr3)
+    console:log("Attribute 1: " .. self.attr1)
+    self.attribute1:debugPrint()
+    console:log("Attribute 2: " .. self.attr2)
+    self.attribute2:debugPrint()
+    console:log("Attribute 3: " .. self.attr3)
+end
+
+function OAMObj:getTileIndex()
+    return self.attribute2.tile_idx
 end
 
 function testFuncFromTables()
     testObj1 = OAMObj:new(nil, 0)
-    -- testObj2 = OAMObj:new(nil, 1)
+    testObj2 = OAMObj:new(nil, 1)
     console:log("Printing OAM Attributes")
-    testObj1:debugPrint()
-    -- testObj2:debugPrint()
+    console:log(tostring(testObj1:getTileIndex()))
 
 end
+
+return OAMObj
