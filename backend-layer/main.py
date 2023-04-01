@@ -1,26 +1,41 @@
-import sys
-
-sys.path.append(r"D:\\Senior Project\\war-dot-io\\backend-layer")
-
-from DataContext.Entities.entity import Session, Engine, Base
-from DataContext.Entities.img_entity import Image
+# import sys
+# sys.path.append(r"D:\\Senior Project\\war-dot-io\\backend-layer")
+from .DataContext.Entities.entity import Session, Engine, Base
+from .DataContext.Entities.img_entity import Image, ImageSchema
+from flask import Flask, jsonify, request
 
 Base.metadata.create_all(Engine)
 
-# Start Session
-session = Session()
-tests = session.query(Image).all()
+# Start new app
+app = Flask(__name__)
 
-if len(tests) == 0:
-    # create and persist mock exam
-    test_add = Image("flowdiagram.png", "TEST GAME")
-    session.add(test_add)
+
+@app.route("/images", methods=["GET"])
+def getAllImages():
+    # Fetch Data
+    session = Session()
+    image_objects = session.query(Image).all()
+
+    # transform into JSON
+    schema = ImageSchema(many=True)
+    images = schema.dump(image_objects)
+    session.close()
+    return jsonify(images)
+
+
+@app.route("/images", methods=["POST"])
+def addImages():
+    # posted data
+    posted_image = ImageSchema(only=("img_src:", "game_name:")).load(request.get_json())
+    image = Image(**posted_image)
+
+    session = Session()
+    session.add(image)
     session.commit()
     session.close()
 
-    # reload exams
-    tests = session.query(Image).all()
+    return "Success", 201
 
-print("Tests:")
-for img in tests:
-    print(f"({img.id}) {img.created_on}, {img.img_src}, {img.game_name}")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
