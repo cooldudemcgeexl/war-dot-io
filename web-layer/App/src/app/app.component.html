@@ -1,8 +1,11 @@
 <div class="toolbar" role="banner">
-	<h1>Virtual Task Recognicion Using Reinforcement Learning</h1>
+	<h1>Virtual Task Recognition Using Reinforcement Learning</h1>
 </div>
-
-<div class="webBody" role="main">
-	<img id="image" style="display: flex;" [src]="getImage()" />
-	<img id="graph" style="display: flex;" [src]="getGraph()" />
-</div>
+<img *ngIf="done" id="image" style="display: flex;" [src]="image" />
+<span id="graph" style="display: flex;">{{graph}}</span>
+<h2> {{outcome}} </h2>
+<!-- <div class="webBody" role="main">
+	<img id="image" style="display: flex;" [src]="image" />
+	<img id="graph" style="display: flex;" [src]="graph" />
+	<h2> {{outcome}} </h2>
+</div> -->
