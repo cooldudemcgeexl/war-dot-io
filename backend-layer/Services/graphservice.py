@@ -1,2 +1,2 @@
 def generateNewGraph():
-    return ""
+    return "Pizza"
