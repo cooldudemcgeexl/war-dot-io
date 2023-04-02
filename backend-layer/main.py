@@ -1,4 +1,6 @@
 from flask import Flask, jsonify, request
+from .Services.imageservice import getImage
+from .Services.graphservice import generateNewGraph
 
 # Start new app
 app = Flask(__name__)
@@ -6,13 +8,14 @@ app = Flask(__name__)
 
 @app.route("/images", methods=["GET"])
 def getCurrentImage():
-    # Fetch Data
-    return "Success", 201
+    img_str = getImage()
+    return img_str, 201
 
 
 @app.route("/graphs", methods=["GET"])
 def getGraphs():
-    return "Success", 201
+    graph_str = generateNewGraph()
+    return graph_str, 201
 
 
 @app.route("/prediction", methods=["GET"])
