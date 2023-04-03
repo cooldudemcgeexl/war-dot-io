@@ -1,5 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
+import os
 
 """
 Data
@@ -29,4 +30,5 @@ while running == True:
         else:
             incorrect += 1
         ax.bar(options, counts, color=bar_colors)
-        plt.show()
+        plt.savefig('plot.png')
+        requested = False
