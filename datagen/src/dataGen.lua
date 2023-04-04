@@ -21,11 +21,9 @@ local function gameCheckLoop()
     if DetectThisFrame then
         local currentGame = gameDetector.detectGame()
         if currentGame ~= "None" then
-            ActiveGame = currentGame
             DetectThisFrame = false
-        else
-            ActiveGame = "None"
         end
+        ActiveGame = currentGame
     else
         local newObjVRAM = vram.hasOBJVRAMChanged(ObjVRAMStart)
         if newObjVRAM ~= nil then
