@@ -4,7 +4,7 @@ local gameTable = require("tables.gameText.intro.gameTable")
 
 
 local function detectGame()
-    local oamArr = oam.getOAMArray(10)
+    local oamArr = oam.getOAMArray(11)
     local oamLen = oam.getTileStringLength(oamArr)
     local strTiles = vram.getVRAMSlots(oamLen)
     local gameTitle = gameTable[strTiles]
