@@ -13,7 +13,7 @@ local gameTable = {
     [stringTable.DODGE2] = "Hectic_Highway",
     [stringTable.GRAB] = "Mug_Shot",
     [stringTable.SPAR] = "Sparring_Wario",
-    [stringTable.FLEE0] = "Dodge_Balls"
+    [stringTable.FLEE] = "Dodge_Balls"
 }
 
 return gameTable
