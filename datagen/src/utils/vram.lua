@@ -12,7 +12,7 @@ end
 ---@param currOBJVramStart string
 ---@return string|nil
 local function hasOBJVRAMChanged(currOBJVramStart)
-    local newOBJVramStart = emu:readRange(OBJVRAMADDR, 32 * 3)
+    local newOBJVramStart = getVRAMSlots(1)
     if newOBJVramStart ~= currOBJVramStart then
         return newOBJVramStart
     end
@@ -21,7 +21,8 @@ end
 
 local vram = {
     getVRAMSlots = getVRAMSlots,
-    hasOBJVRAMChanged = hasOBJVRAMChanged
+    hasOBJVRAMChanged = hasOBJVRAMChanged,
+    OBJVRAMADDR = OBJVRAMADDR
 }
 
 return vram

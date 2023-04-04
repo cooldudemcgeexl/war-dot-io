@@ -1,11 +1,9 @@
-local introTable = require("tables.gameText.intro.asciiString")
+local introTable = require("tables.gameText.intro.gameTable")
 
 --TODO: Change this to dynamically merge the indivdiual tables together
 
 local gameTable = {
-    [introTable.ATTACK] = "Repellion",
-    [introTable.DRESS] = "Wario Wear",
-    [introTable.DODGE] = "Crazy Cars"
+    ["Intro"] = introTable
 }
 
 return gameTable
