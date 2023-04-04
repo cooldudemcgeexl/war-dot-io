@@ -12,7 +12,7 @@ end
 ---@param currOBJVramStart string
 ---@return string|nil
 local function hasOBJVRAMChanged(currOBJVramStart)
-    local newOBJVramStart = getVRAMSlots(1)
+    local newOBJVramStart = getVRAMSlots(6)
     if newOBJVramStart ~= currOBJVramStart then
         return newOBJVramStart
     end
