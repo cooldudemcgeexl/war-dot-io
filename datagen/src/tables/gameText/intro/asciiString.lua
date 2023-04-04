@@ -15,7 +15,8 @@ local stringTable = {
     AIM = makeAsciiString(byteTable.AIM),
     DODGE2 = makeAsciiString(byteTable.DODGE2),
     GRAB = makeAsciiString(byteTable.GRAB),
-    SPAR = makeAsciiString(byteTable.SPAR)
+    SPAR = makeAsciiString(byteTable.SPAR),
+    FLEE = makeAsciiString(byteTable.FLEE)
 }
 
 
