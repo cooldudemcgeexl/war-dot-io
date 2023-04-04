@@ -1,4 +1,4 @@
 .venv/
-resources/dumps/*.png
 *.gba
 *.sav
+resources/dumps/**/*.png
