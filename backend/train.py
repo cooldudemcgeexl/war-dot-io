@@ -1,9 +1,9 @@
 from pathlib import Path
 
+from constants.paths import TRAINING_DATA
 from model_gen import ModelTrainer
 from model_gen.utils import get_total_games
 
-TRAINING_DATA = Path(__file__).parents[1] / "resources/dumps/Intro"
 MODEL_PARAMS = {
     "img_width": 240,
     "img_height": 160,

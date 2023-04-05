@@ -1,10 +1,9 @@
 from pathlib import Path
 
 import tensorflow as tf
+from constants.paths import MODEL_SAVE_DIR
 
 keras = tf.keras
-
-MODEL_SAVE_DIR = Path(__file__).parents[2] / "resources/models"
 
 
 class ModelTrainer:
