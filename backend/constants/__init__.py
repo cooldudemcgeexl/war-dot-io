@@ -1,1 +1,1 @@
-from game_list import *
+from .game_list import *
