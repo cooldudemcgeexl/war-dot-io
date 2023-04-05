@@ -1,17 +1,20 @@
+import os
+from pathlib import Path
+
 import numpy as np
 import tensorflow as tf
-from tensorflow import keras
-import os
+
+keras = tf.keras
 
 """
 Load Model
 """
-model = keras.models.load_model(os.getcwd())
+model = keras.models.load_model(str(Path.cwd()))
 
 """
 Load Image
 """
-image = keras.utils.load_img(os.getcwd() + "\\image.png")
+image = keras.utils.load_img(str(Path.cwd().joinpath("image.png")))
 
 """
 Process
