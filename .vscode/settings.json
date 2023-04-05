@@ -1,6 +1,6 @@
 {
   "editor.formatOnSave": true,
-  "python.defaultInterpreterPath": "${workspaceFolder}/models/.venv/bin/python",
+  "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
   "python.formatting.provider": "black",
   "markdown.extension.toc.levels": "2..6",
   "Lua.diagnostics.globals": [
