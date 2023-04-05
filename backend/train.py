@@ -15,3 +15,6 @@ MODEL_PARAMS = {
 
 if __name__ == "__main__":
     mt = ModelTrainer(TRAINING_DATA, MODEL_PARAMS)
+    mt.create_model()
+    mt.train_model()
+    mt.save_model()
