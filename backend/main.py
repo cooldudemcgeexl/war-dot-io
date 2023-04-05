@@ -11,15 +11,10 @@ CORS(app)
 model_runner = ModelRunner(MODEL_DIR, image_path=IMAGE_PATH, category_list=GAMES)
 
 
-@app.route("/graph", methods=["GET"])
-def getGraphs():
-    graph_str = generate_new_graph()
-    return jsonify(graph_str), 201
-
-
-@app.route("/prediction", methods=["GET"])
-def getPrediction():
+@app.route("/reload", methods=["GET"])
+def update_data():
     prediction = model_runner.predict(IMAGE_PATH)
+    graph_str = generate_new_graph()
     return jsonify(prediction), 201
 
 
