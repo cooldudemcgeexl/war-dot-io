@@ -39,17 +39,11 @@ class ModelRunner:
             self.set_image_path(image_path)
         image_np = self._load_image(image_path)
         prediction = self.model.predict(image_np)
-        prediction_max = prediction.argmax(axis=-1)[0]
-        prediction_conf = prediction[0][prediction_max]
+        prediction_max: int = prediction.argmax(axis=-1)[0]
+        prediction_conf: float = prediction[0][prediction_max]
         if self.category_list:
-            prediction_game = self.category_list[prediction_max]
-            result = {
-                "game": prediction_game,
-                "confidence": prediction_conf
-            }
+            prediction_game: str = self.category_list[prediction_max]
+            result = {"game": prediction_game, "confidence": str(prediction_conf)}
             return result
-        result = {
-            "game": prediction_max,
-            "confidence": prediction_conf
-        }
+        result = {"game": str(prediction_max), "confidence": str(prediction_conf)}
         return result
