@@ -2,3 +2,6 @@
 *.gba
 *.sav
 resources/dumps/**/*.png
+!resources/dumps/.keep
+resources/models/*
+!resources/models/.keep
