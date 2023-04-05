@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from model_gen import ModelTrainer
+from model_gen.utils import get_total_games
 
 TRAINING_DATA = Path(__file__).parents[1] / "resources/dumps/Intro"
 MODEL_PARAMS = {
@@ -9,7 +10,7 @@ MODEL_PARAMS = {
     "batch_size": 32,
     "pool_size": 3,
     "strides": 1,
-    "num_outputs": 13,  # 213 total microgames
+    "num_outputs": get_total_games(TRAINING_DATA),  # 213 total microgames
     "epochs": 6,
 }
 
