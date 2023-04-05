@@ -1,5 +1,5 @@
 GAMES = [
-    "Crazy List",
+    "Crazy Cars",
     "Diamond Dig",
     "Dodge Balls",
     "Hectic Highway",
