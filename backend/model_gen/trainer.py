@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import tensorflow as tf
-from constants.paths import MODEL_SAVE_DIR
+from constants.paths import MODEL_DIR
 
 keras = tf.keras
 
@@ -99,6 +99,6 @@ class ModelTrainer:
         print("test loss, test acc: ", results)
         return results
 
-    def save_model(self, path: Path | str = MODEL_SAVE_DIR):
+    def save_model(self, path: Path | str = MODEL_DIR):
 
         self.model.save(path)
