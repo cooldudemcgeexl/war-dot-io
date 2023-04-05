@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from model_gen.trainer import ModelTrainer
+from model_gen import ModelTrainer
 
 TRAINING_DATA = Path(__file__).parents[1] / "resources/dumps/Intro"
 MODEL_PARAMS = {
