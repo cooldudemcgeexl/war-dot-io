@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { interval } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
 
 
 @Component({
@@ -11,32 +13,25 @@ import { HttpClient } from '@angular/common/http';
 
 export class AppComponent implements OnInit {
 	public done: boolean = false;
-	public graph: string = "";
-	public image: string = "";
+	public graph: string = "assets/flowdiagram.png";
+	public image: string = "assets/flowdiagram.png";
 	public outcome: string = "";
 	private url: string = "http://127.0.0.1:8000/";
 
 	constructor(private http: HttpClient) { }
 
 	ngOnInit(): void {
-		this.getImage();
-		this.getGraph();
-		this.getPrediction();
+		this.reloadData();
+		let interval = setInterval(() => {
+			this.reloadData();
+		}, 300000)
 	}
 
-	private getImage() {
-		this.http.get<string>(this.url + "/image").subscribe(x => {
-			this.image = 'data:image/png;base64,' + x
-			this.done = true
+	private reloadData() {
+		this.http.get<string>(this.url + "/reload").subscribe(x => {
+			this.outcome = x; //needs to be changed slightly so the images regenerate
+			this.image = this.image;
+			this.graph = this.graph;
 		})
 	}
-
-	private getGraph() {
-		this.http.get<string>(this.url + "/graph").subscribe(x => this.graph = x)
-	}
-
-	private getPrediction() {
-		this.http.get<string>(this.url + "/prediction").subscribe(x => this.outcome = x)
-	}
-
 }
