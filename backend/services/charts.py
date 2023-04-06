@@ -1,34 +1,27 @@
 import numpy as np
 from matplotlib import pyplot as plt
-import os
+from constants.paths import GRAPH_PATH
 
-"""
-Data
-"""
-correct = 5
-incorrect = 10
-running = True
 
-"""
-Plotting
-"""
-#poll predResult
-predResult = True
+class Charter:
+    def __init__(self) -> None:
+        self.predArr = []
 
-fig, ax = plt.subplots()
-bar_colors = ['tab:green', 'tab:red']
-options = ["Correct", "Incorrect"]
-counts = [correct, incorrect]
-ax.set_ylabel('# Predictions')
-ax.set_xlabel('Result')
+    def addVal(self, val: int):
+        self.predArr.append(val)
 
-requested = True
-while running == True:
-    if requested:
-        if predResult == True:
-            correct += 1
-        else:
-            incorrect += 1
-        ax.bar(options, counts, color=bar_colors)
-        plt.savefig('plot.png')
-        requested = False
+    def getList(self):
+        return self.predArr
+
+    def genGraph(self):
+        length = len(self.predArr)
+        l = length // 5
+        x = [l, 2 * l, 3 * l, 4 * l, 5 * l]
+        y = []
+        for i in range(len(x)):
+            y1 = self.predArr[0 : x[i]].count(1)
+            y.append(y1 / x[i])
+        plt.plot(x, y)
+        plt.xlabel(" Amount of Trials")
+        plt.ylabel(" Percent of Correct Predictions ")
+        plt.savefig(GRAPH_PATH)

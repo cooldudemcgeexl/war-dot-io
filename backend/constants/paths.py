@@ -7,5 +7,6 @@ MODEL_DIR = BASE_DIR / "resources/models"
 
 IMAGE_DIR = BASE_DIR / "resources/testImages"
 IMAGE_PATH = IMAGE_DIR / "test.png"
+GRAPH_PATH = IMAGE_DIR / "graph.png"
 
 TRAINING_DATA = BASE_DIR / "resources/dumps/Intro"
