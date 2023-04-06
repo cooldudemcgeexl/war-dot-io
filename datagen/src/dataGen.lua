@@ -13,15 +13,22 @@ local function buildFilePathsAtStartup()
     pathBuilder.makeGameDirs()
 end
 
+CanDump = false
+
+
 local function gameCheckLoop()
     if ActiveGame ~= "None" then
-        frameDumper.dumpFrame(Category, ActiveGame)
+        CanDump = frameDumper.dumpCheck()
+        if CanDump then
+            frameDumper.dumpFrame(Category, ActiveGame)
+        end
     end
 
     if DetectThisFrame then
         local currentGame = gameDetector.detectGame()
         if currentGame ~= "None" then
             DetectThisFrame = false
+            FramesThisGame = 1
         end
         ActiveGame = currentGame
     else
