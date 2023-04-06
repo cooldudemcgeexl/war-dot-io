@@ -7,15 +7,13 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/graph", methods=["GET"])
+@app.route("/reload", methods=["GET"])
 def getGraphs():
-    graph_str = generateNewGraph()
-    return jsonify(graph_str), 201
-
-
-@app.route("/prediction", methods=["GET"])
-def getPrediction():
-    return jsonify("Success"), 201
+    generateNewGraph()
+    # setImage()
+    # succ_str = wasPredictionSuccessful()
+    succ_str = "Successs"
+    return jsonify(succ_str), 201
 
 
 if __name__ == "__main__":

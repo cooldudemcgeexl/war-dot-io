@@ -1,11 +1,22 @@
-<div class="toolbar" role="banner">
-	<h1>Virtual Task Recognition Using Reinforcement Learning</h1>
+<div class="mat-app-background">
+	<mat-toolbar color="accent">
+		<span class="spacer"></span>
+		<h1 class="spacer">Virtual Task Recognition Using Reinforcement Learning</h1>
+		<span class="spacer"></span>
+	</mat-toolbar>
+	<mat-grid-list cols="2" rowHeight="100px">
+		<mat-grid-tile colspan="1" rowspan="1">
+			<h3 class="bold-text">Current Image Prediction: {{outcome}}</h3>
+		</mat-grid-tile>
+		<mat-grid-tile colspan="1" rowspan="1">
+			<h3 class="bold-text">Accuracy Over Time</h3>
+		</mat-grid-tile>
+		<mat-grid-tile colspan="1" rowspan="4">
+			<img [src]="image" />
+		</mat-grid-tile>
+		<mat-grid-tile colspan="1" rowspan="4">
+			<img [src]="graph" />
+		</mat-grid-tile>
+	</mat-grid-list>
+	<!-- <h2 class="bold-text" style="text-align: center;">Regenerating in {{outcome}} seconds</h2> -->
 </div>
-<img *ngIf="done" id="image" style="display: flex;" [src]="image" />
-<span id="graph" style="display: flex;">{{graph}}</span>
-<h2> {{outcome}} </h2>
-<!-- <div class="webBody" role="main">
-	<img id="image" style="display: flex;" [src]="image" />
-	<img id="graph" style="display: flex;" [src]="graph" />
-	<h2> {{outcome}} </h2>
-</div> -->
