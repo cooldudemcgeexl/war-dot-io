@@ -1,6 +1,9 @@
+from io import BytesIO
+
 import numpy as np
 from constants.paths import GRAPH_PATH
 from matplotlib import pyplot as plt
+from matplotlib.figure import Figure
 
 
 class Charter:
@@ -28,7 +31,9 @@ class Charter:
         for i in range(len(x)):
             y1 = self.predArr[0 : x[i]].count(1)
             y.append(y1 / x[i])
-        plt.plot(x, y)
-        plt.xlabel(" Amount of Trials")
-        plt.ylabel(" Percent of Correct Predictions ")
-        plt.savefig(GRAPH_PATH)
+        fig = Figure()
+        ax = fig.subplots()
+        ax.plot(x, y)
+        fig.supxlabel("Amount of Trials")
+        fig.supylabel(" Percent of Correct Predictions")
+        fig.savefig(GRAPH_PATH, format="png")
