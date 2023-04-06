@@ -1,6 +1,6 @@
 import numpy as np
-from matplotlib import pyplot as plt
 from constants.paths import GRAPH_PATH
+from matplotlib import pyplot as plt
 
 
 class Charter:
@@ -14,10 +14,9 @@ class Charter:
         return self.predArr
 
     def readTxt(self, filepath):
-        f = open(filepath)
-        game = f.read()
-        f.close()
-        return game
+        with open(filepath, "r") as f:
+            return f.read()
+
     def genGraph(self):
         length = len(self.predArr)
         if length > 5:
