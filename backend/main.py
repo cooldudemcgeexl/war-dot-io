@@ -1,10 +1,11 @@
 from constants.game_list import GAMES
-from constants.paths import IMAGE_PATH, MODEL_SAVE_DIR
+from constants.paths import IMAGE_PATH, MODEL_SAVE_DIR, BASE_DIR
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from model_gen import ModelRunner
 from services.graph_service import generate_new_graph
 from services.charts import Charter
+from pathlib import Path
 
 # Start new app
 app = Flask(__name__)
@@ -16,7 +17,7 @@ graph_em = Charter()
 @app.route("/reload", methods=["GET"])
 def update_data():
     prediction = model_runner.predict(IMAGE_PATH)
-    if (True): #if the prediction matches Nicks text string
+    if (graph_em.readTxt(BASE_DIR / "resources/testImages/game.txt") == prediction["game"]):
         graph_em.addVal(1)
     else:
         graph_em.addVal(0)
