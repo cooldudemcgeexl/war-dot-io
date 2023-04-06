@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from model_gen import ModelRunner
 from services.graph_service import generate_new_graph
+from services.charts import Charter
 
 # Start new app
 app = Flask(__name__)
@@ -14,7 +15,7 @@ model_runner = ModelRunner(MODEL_SAVE_DIR, image_path=IMAGE_PATH, category_list=
 @app.route("/reload", methods=["GET"])
 def update_data():
     prediction = model_runner.predict(IMAGE_PATH)
-    graph_str = generate_new_graph()
+    Charter.genGraph()
     return jsonify(prediction), 201
 
 
