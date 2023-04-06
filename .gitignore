@@ -4,6 +4,7 @@
 resources/dumps/**/*.png
 !resources/dumps/.keep
 resources/testImages/**/*.png
+resources/testImages/**/*.txt
 !resources/testImages/.keep
 resources/models/*
 !resources/models/.keep
