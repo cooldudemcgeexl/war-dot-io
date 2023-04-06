@@ -52,4 +52,4 @@ class ModelRunner:
             "game": prediction_max,
             "confidence": prediction_conf
         }
-        return prediction_max
+        return result
