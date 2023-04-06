@@ -34,12 +34,22 @@ class ModelRunner:
         image_np = np.array([image_array])
         return image_np
 
-    def predict(self, image_path: Path | str | None = None) -> int | str:
+    def predict(self, image_path: Path | str | None = None) -> dict:
         if image_path:
             self.set_image_path(image_path)
         image_np = self._load_image(image_path)
         prediction = self.model.predict(image_np)
         prediction_max = prediction.argmax(axis=-1)[0]
+        prediction_conf = prediction[0][prediction_max]
         if self.category_list:
-            return self.category_list[prediction_max]
+            prediction_game = self.category_list[prediction_max]
+            result = {
+                "game": prediction_game,
+                "confidence": prediction_conf
+            }
+            return result
+        result = {
+            "game": prediction_max,
+            "confidence": prediction_conf
+        }
         return prediction_max
