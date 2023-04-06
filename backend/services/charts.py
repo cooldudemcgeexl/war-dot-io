@@ -13,9 +13,15 @@ class Charter:
     def getList(self):
         return self.predArr
 
+    def readTxt(self, filepath):
+        f = open(filepath)
+        return f.read()
     def genGraph(self):
         length = len(self.predArr)
-        l = length // 5
+        if length > 5:
+            l = length // 5
+        else:
+            l = 1
         x = [l, 2 * l, 3 * l, 4 * l, 5 * l]
         y = []
         for i in range(len(x)):
