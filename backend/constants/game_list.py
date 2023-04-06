@@ -1,0 +1,15 @@
+GAMES = [
+    "Crazy List",
+    "Diamond Dig",
+    "Dodge Balls",
+    "Hectic Highway",
+    "I Spy",
+    "Mug Shot",
+    "Repellion",
+    "Saving Face",
+    "Sparring Wario",
+    "Super Wario Bros.",
+    "The Maze That Pays",
+    "Wario Wear",
+    "Wario Whirled",
+]
