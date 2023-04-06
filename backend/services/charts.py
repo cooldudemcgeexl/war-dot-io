@@ -15,7 +15,9 @@ class Charter:
 
     def readTxt(self, filepath):
         f = open(filepath)
-        return f.read()
+        game = f.read()
+        f.close()
+        return game
     def genGraph(self):
         length = len(self.predArr)
         if length > 5:
