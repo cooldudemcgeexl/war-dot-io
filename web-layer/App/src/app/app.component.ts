@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, interval, mergeMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { interval } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
+import { timer } from 'rxjs';
 
 
 @Component({
@@ -13,25 +12,48 @@ import { takeWhile } from 'rxjs/operators';
 
 export class AppComponent implements OnInit {
 	public done: boolean = false;
-	public graph: string = "assets/flowdiagram.png";
+	public graph: string = "\\wsl$\Ubuntu\home\carl3300\war-dot-io\resources\testImages";
 	public image: string = "assets/flowdiagram.png";
 	public outcome: string = "";
+	private tempImg: string = ""
+	private tempGraph: string = ""
+	private timeStamp1: number = 0;
+	private timeStamp2: number = 0;
 	private url: string = "http://127.0.0.1:8000/";
 
 	constructor(private http: HttpClient) { }
 
 	ngOnInit(): void {
-		this.reloadData();
-		let interval = setInterval(() => {
-			this.reloadData();
-		}, 300000)
+		this.reloadData().subscribe(x => this.outcome = x);
+		interval(3 * 60 * 1000)
+			.pipe(
+				mergeMap(() => this.reloadData())
+			)
+			.subscribe(x => {
+				this.outcome = x;
+				this.timeStamp1 = 1
+				this.timeStamp2 = 1
+			})
+	}
+	public getImage() {
+		if (this.timeStamp1) {
+			this.tempImg = this.image + '?' + this.timeStamp1;
+			this.timeStamp1 = 0;
+			return this.tempImg;
+		}
+		return this.image;
 	}
 
-	private reloadData() {
-		this.http.get<string>(this.url + "/reload").subscribe(x => {
-			this.outcome = x; //needs to be changed slightly so the images regenerate
-			this.image = this.image;
-			this.graph = this.graph;
-		})
+	public getGraph() {
+		if (this.timeStamp2) {
+			this.tempGraph = this.graph + '?' + this.timeStamp2;
+			this.timeStamp2 = 0
+			return this.tempGraph;
+		}
+		return this.graph;
+	}
+
+	private reloadData(): Observable<string> {
+		return this.http.get<string>(this.url + "/reload")
 	}
 }
