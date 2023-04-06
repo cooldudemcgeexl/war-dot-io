@@ -7,4 +7,3 @@ from model_gen import ModelRunner
 if __name__ == "__main__":
     mr = ModelRunner(MODEL_DIR, image_path=IMAGE_DIR, category_list=GAMES)
     prediction = mr.predict(IMAGE_PATH)
-    print(prediction)

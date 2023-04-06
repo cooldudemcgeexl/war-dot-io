@@ -1,5 +1,5 @@
 from constants.game_list import GAMES
-from constants.paths import IMAGE_PATH, MODEL_DIR
+from constants.paths import IMAGE_PATH, MODEL_SAVE_DIR
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from model_gen import ModelRunner
@@ -9,7 +9,7 @@ from services.charts import Charter
 # Start new app
 app = Flask(__name__)
 CORS(app)
-model_runner = ModelRunner(MODEL_DIR, image_path=IMAGE_PATH, category_list=GAMES)
+model_runner = ModelRunner(MODEL_SAVE_DIR, image_path=IMAGE_PATH, category_list=GAMES)
 
 
 @app.route("/reload", methods=["GET"])

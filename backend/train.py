@@ -11,7 +11,7 @@ MODEL_PARAMS = {
     "pool_size": 3,
     "strides": 1,
     "num_outputs": get_total_games(TRAINING_DATA),  # 213 total microgames
-    "epochs": 6,
+    "epochs": 3,
 }
 
 if __name__ == "__main__":
